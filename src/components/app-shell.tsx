@@ -1,5 +1,5 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
-import { LogOut, LayoutDashboard, TrendingUp, Settings, Menu } from "lucide-react";
+import { LogOut, LayoutDashboard, TrendingUp, Settings, Menu, Sparkles, Repeat2 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
@@ -21,6 +21,8 @@ import { cn } from "@/lib/utils";
 
 const nav = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { to: "/learn", label: "Learn", icon: Sparkles },
+  { to: "/review", label: "Review", icon: Repeat2 },
   { to: "/progress", label: "Progress", icon: TrendingUp },
   { to: "/settings", label: "Settings", icon: Settings },
 ] as const;

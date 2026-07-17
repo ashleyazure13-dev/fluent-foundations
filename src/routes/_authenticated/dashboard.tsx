@@ -1,10 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { getMyProfile } from "@/lib/profile.functions";
+import { getProgress } from "@/lib/learn.functions";
 import { AppShell } from "@/components/app-shell";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Flame, Sprout, Timer } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Flame, Sprout, Timer, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
@@ -18,10 +20,9 @@ export const Route = createFileRoute("/_authenticated/dashboard")({
 
 function Dashboard() {
   const fetchProfile = useServerFn(getMyProfile);
-  const { data: profile } = useQuery({
-    queryKey: ["profile", "me"],
-    queryFn: () => fetchProfile(),
-  });
+  const fetchProgress = useServerFn(getProgress);
+  const { data: profile } = useQuery({ queryKey: ["profile", "me"], queryFn: () => fetchProfile() });
+  const { data: progress } = useQuery({ queryKey: ["progress"], queryFn: () => fetchProgress() });
 
   const first = profile?.display_name?.split(" ")[0] ?? "there";
 
@@ -34,32 +35,44 @@ function Dashboard() {
             Ready to speak Italian?
           </h1>
           <p className="mt-2 max-w-xl text-muted-foreground">
-            Your learning engine is being prepared. Lessons and practice will
-            appear here soon.
+            Every session flows the same way: listen, understand, speak, notice, retrieve, converse, write, review.
           </p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-3">
-          <Stat icon={<Sprout className="h-4 w-4" />} label="Phrases seen" value="0" />
-          <Stat icon={<Timer className="h-4 w-4" />} label="Minutes practiced" value="0" />
-          <Stat icon={<Flame className="h-4 w-4" />} label="Days active" value="0" />
+          <Stat icon={<Sprout className="h-4 w-4" />} label="Phrases seen" value={String(progress?.chunksSeen ?? 0)} />
+          <Stat icon={<Timer className="h-4 w-4" />} label="Sessions" value={String(progress?.sessionsCompleted ?? 0)} />
+          <Stat icon={<Flame className="h-4 w-4" />} label="Due to review" value={String(progress?.dueNow ?? 0)} />
         </div>
 
-        <Card className="mt-8">
-          <CardHeader>
-            <CardTitle className="font-display">Today's session</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="rounded-lg border border-dashed border-border p-8 text-center">
-              <p className="font-display text-lg italic text-muted-foreground">
-                Coming soon
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <Card>
+            <CardHeader>
+              <CardTitle className="font-display">Today's session</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Start a fresh eight-step lesson built around one Italian scene.
               </p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Content packs and the learning engine ship in the next phase.
+              <Button asChild className="mt-4">
+                <Link to="/learn">Start learning <ArrowRight className="ml-1 h-4 w-4" /></Link>
+              </Button>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle className="font-display">Review queue</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                {progress?.dueNow ? `${progress.dueNow} phrase${progress.dueNow === 1 ? "" : "s"} waiting.` : "You're all caught up."}
               </p>
-            </div>
-          </CardContent>
-        </Card>
+              <Button asChild variant="outline" className="mt-4">
+                <Link to="/review">Open review <ArrowRight className="ml-1 h-4 w-4" /></Link>
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </AppShell>
   );

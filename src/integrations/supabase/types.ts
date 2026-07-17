@@ -14,6 +14,259 @@ export type Database = {
   }
   public: {
     Tables: {
+      chunks: {
+        Row: {
+          cefr: string
+          created_at: string
+          gloss: string
+          id: string
+          ipa: string | null
+          language_code: string
+          register: string | null
+          tags: string[]
+          text: string
+        }
+        Insert: {
+          cefr?: string
+          created_at?: string
+          gloss: string
+          id?: string
+          ipa?: string | null
+          language_code: string
+          register?: string | null
+          tags?: string[]
+          text: string
+        }
+        Update: {
+          cefr?: string
+          created_at?: string
+          gloss?: string
+          id?: string
+          ipa?: string | null
+          language_code?: string
+          register?: string | null
+          tags?: string[]
+          text?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chunks_language_code_fkey"
+            columns: ["language_code"]
+            isOneToOne: false
+            referencedRelation: "languages"
+            referencedColumns: ["code"]
+          },
+        ]
+      }
+      dialogue_chunks: {
+        Row: {
+          chunk_id: string
+          dialogue_id: string
+          position: number
+        }
+        Insert: {
+          chunk_id: string
+          dialogue_id: string
+          position?: number
+        }
+        Update: {
+          chunk_id?: string
+          dialogue_id?: string
+          position?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dialogue_chunks_chunk_id_fkey"
+            columns: ["chunk_id"]
+            isOneToOne: false
+            referencedRelation: "chunks"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "dialogue_chunks_dialogue_id_fkey"
+            columns: ["dialogue_id"]
+            isOneToOne: false
+            referencedRelation: "dialogues"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      dialogues: {
+        Row: {
+          created_at: string
+          cultural_note: string | null
+          id: string
+          scenario: string
+          theme_id: string
+          title: string
+          turns: Json
+        }
+        Insert: {
+          created_at?: string
+          cultural_note?: string | null
+          id?: string
+          scenario: string
+          theme_id: string
+          title: string
+          turns?: Json
+        }
+        Update: {
+          created_at?: string
+          cultural_note?: string | null
+          id?: string
+          scenario?: string
+          theme_id?: string
+          title?: string
+          turns?: Json
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dialogues_theme_id_fkey"
+            columns: ["theme_id"]
+            isOneToOne: false
+            referencedRelation: "themes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      grammar_notes: {
+        Row: {
+          body_md: string
+          cefr: string
+          created_at: string
+          id: string
+          language_code: string
+          title: string
+        }
+        Insert: {
+          body_md: string
+          cefr?: string
+          created_at?: string
+          id?: string
+          language_code: string
+          title: string
+        }
+        Update: {
+          body_md?: string
+          cefr?: string
+          created_at?: string
+          id?: string
+          language_code?: string
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "grammar_notes_language_code_fkey"
+            columns: ["language_code"]
+            isOneToOne: false
+            referencedRelation: "languages"
+            referencedColumns: ["code"]
+          },
+        ]
+      }
+      languages: {
+        Row: {
+          code: string
+          created_at: string
+          name: string
+          rtl: boolean
+          script: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          name: string
+          rtl?: boolean
+          script?: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          name?: string
+          rtl?: boolean
+          script?: string
+        }
+        Relationships: []
+      }
+      learner_chunks: {
+        Row: {
+          chunk_id: string
+          created_at: string
+          difficulty: number
+          due_at: string
+          lapses: number
+          last_grade: number | null
+          last_reviewed_at: string | null
+          reps: number
+          stability: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          chunk_id: string
+          created_at?: string
+          difficulty?: number
+          due_at?: string
+          lapses?: number
+          last_grade?: number | null
+          last_reviewed_at?: string | null
+          reps?: number
+          stability?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          chunk_id?: string
+          created_at?: string
+          difficulty?: number
+          due_at?: string
+          lapses?: number
+          last_grade?: number | null
+          last_reviewed_at?: string | null
+          reps?: number
+          stability?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "learner_chunks_chunk_id_fkey"
+            columns: ["chunk_id"]
+            isOneToOne: false
+            referencedRelation: "chunks"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      learner_languages: {
+        Row: {
+          cefr_target: string
+          language_code: string
+          started_at: string
+          user_id: string
+        }
+        Insert: {
+          cefr_target?: string
+          language_code: string
+          started_at?: string
+          user_id: string
+        }
+        Update: {
+          cefr_target?: string
+          language_code?: string
+          started_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "learner_languages_language_code_fkey"
+            columns: ["language_code"]
+            isOneToOne: false
+            referencedRelation: "languages"
+            referencedColumns: ["code"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -46,6 +299,150 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      session_events: {
+        Row: {
+          chunk_id: string | null
+          created_at: string
+          grade: number | null
+          id: string
+          payload: Json
+          session_id: string
+          step: string
+          user_id: string
+        }
+        Insert: {
+          chunk_id?: string | null
+          created_at?: string
+          grade?: number | null
+          id?: string
+          payload?: Json
+          session_id: string
+          step: string
+          user_id: string
+        }
+        Update: {
+          chunk_id?: string | null
+          created_at?: string
+          grade?: number | null
+          id?: string
+          payload?: Json
+          session_id?: string
+          step?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "session_events_chunk_id_fkey"
+            columns: ["chunk_id"]
+            isOneToOne: false
+            referencedRelation: "chunks"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "session_events_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      sessions: {
+        Row: {
+          completed_at: string | null
+          dialogue_id: string | null
+          id: string
+          language_code: string
+          started_at: string
+          summary: Json
+          theme_id: string | null
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string | null
+          dialogue_id?: string | null
+          id?: string
+          language_code: string
+          started_at?: string
+          summary?: Json
+          theme_id?: string | null
+          user_id: string
+        }
+        Update: {
+          completed_at?: string | null
+          dialogue_id?: string | null
+          id?: string
+          language_code?: string
+          started_at?: string
+          summary?: Json
+          theme_id?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sessions_dialogue_id_fkey"
+            columns: ["dialogue_id"]
+            isOneToOne: false
+            referencedRelation: "dialogues"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sessions_language_code_fkey"
+            columns: ["language_code"]
+            isOneToOne: false
+            referencedRelation: "languages"
+            referencedColumns: ["code"]
+          },
+          {
+            foreignKeyName: "sessions_theme_id_fkey"
+            columns: ["theme_id"]
+            isOneToOne: false
+            referencedRelation: "themes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      themes: {
+        Row: {
+          cefr: string
+          created_at: string
+          description: string | null
+          id: string
+          language_code: string
+          slug: string
+          sort_order: number
+          title: string
+        }
+        Insert: {
+          cefr?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          language_code: string
+          slug: string
+          sort_order?: number
+          title: string
+        }
+        Update: {
+          cefr?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          language_code?: string
+          slug?: string
+          sort_order?: number
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "themes_language_code_fkey"
+            columns: ["language_code"]
+            isOneToOne: false
+            referencedRelation: "languages"
+            referencedColumns: ["code"]
+          },
+        ]
       }
       user_roles: {
         Row: {
