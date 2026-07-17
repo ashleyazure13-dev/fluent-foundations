@@ -144,7 +144,7 @@ export const gradeChunk = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) =>
     z
       .object({
-        sessionId: z.string().uuid(),
+        sessionId: z.string().uuid().nullable().optional(),
         chunkId: z.string().uuid(),
         grade: z.union([z.literal(0), z.literal(1), z.literal(2), z.literal(3)]),
         step: z.string().default("schedule"),
@@ -187,13 +187,15 @@ export const gradeChunk = createServerFn({ method: "POST" })
     );
     if (upErr) throw new Error(upErr.message);
 
-    await supabase.from("session_events").insert({
-      session_id: data.sessionId,
-      user_id: userId,
-      step: data.step,
-      chunk_id: data.chunkId,
-      grade: data.grade,
-    });
+    if (data.sessionId) {
+      await supabase.from("session_events").insert({
+        session_id: data.sessionId,
+        user_id: userId,
+        step: data.step,
+        chunk_id: data.chunkId,
+        grade: data.grade,
+      });
+    }
 
     return { ok: true, due_at: next.due_at };
   });
