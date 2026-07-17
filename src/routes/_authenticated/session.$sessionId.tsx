@@ -674,7 +674,3 @@ function StepShell({ step, hint, children }: { step: SessionStepKind; hint: stri
   );
 }
 
-// Suppress unused-effect eslint via a noop ref effect (StrictMode double-mount safety for SR)
-export function _noop() {
-  useEffect(() => {}, []);
-}
