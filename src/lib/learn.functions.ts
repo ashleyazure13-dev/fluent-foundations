@@ -112,7 +112,7 @@ export const getSession = createServerFn({ method: "GET" })
     if (dialogueRes.error) throw new Error(dialogueRes.error.message);
     if (themeRes.error) throw new Error(themeRes.error.message);
 
-    const dialogue = dialogueRes.data as DialogueRow;
+    const dialogue = dialogueRes.data as unknown as DialogueRow;
 
     const { data: chunkLinks, error: cErr } = await supabase
       .from("dialogue_chunks")
