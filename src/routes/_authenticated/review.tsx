@@ -44,7 +44,7 @@ function ReviewPage() {
   const grade = async (g: 0 | 1 | 2 | 3) => {
     if (!current) return;
     try {
-      await gradeFn({ data: { sessionId: crypto.randomUUID(), chunkId: current.id, grade: g, step: "review" } });
+      await gradeFn({ data: { chunkId: current.id, grade: g, step: "review" } });
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Grade failed");
       return;
