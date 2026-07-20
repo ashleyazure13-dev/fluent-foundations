@@ -18,6 +18,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { PaywallGate } from "@/components/paywall-gate";
 
 const nav = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -65,7 +66,9 @@ export function AppShell({ children }: { children: ReactNode }) {
             </div>
           </header>
 
-          <main className="px-4 py-8 md:px-8">{children}</main>
+          <main className="px-4 py-8 md:px-8">
+            <PaywallGate>{children}</PaywallGate>
+          </main>
         </div>
       </div>
     </div>

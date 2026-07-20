@@ -18,6 +18,7 @@ import { Route as AuthenticatedReviewRouteImport } from './routes/_authenticated
 import { Route as AuthenticatedProgressRouteImport } from './routes/_authenticated/progress'
 import { Route as AuthenticatedLearnRouteImport } from './routes/_authenticated/learn'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedBillingRouteImport } from './routes/_authenticated/billing'
 import { Route as AuthenticatedSessionSessionIdRouteImport } from './routes/_authenticated/session.$sessionId'
 
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
@@ -64,6 +65,11 @@ const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedBillingRoute = AuthenticatedBillingRouteImport.update({
+  id: '/billing',
+  path: '/billing',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedSessionSessionIdRoute =
   AuthenticatedSessionSessionIdRouteImport.update({
     id: '/session/$sessionId',
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/billing': typeof AuthenticatedBillingRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/learn': typeof AuthenticatedLearnRoute
   '/progress': typeof AuthenticatedProgressRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/billing': typeof AuthenticatedBillingRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/learn': typeof AuthenticatedLearnRoute
   '/progress': typeof AuthenticatedProgressRoute
@@ -99,6 +107,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/_authenticated/billing': typeof AuthenticatedBillingRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/learn': typeof AuthenticatedLearnRoute
   '/_authenticated/progress': typeof AuthenticatedProgressRoute
@@ -112,6 +121,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/reset-password'
+    | '/billing'
     | '/dashboard'
     | '/learn'
     | '/progress'
@@ -123,6 +133,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/reset-password'
+    | '/billing'
     | '/dashboard'
     | '/learn'
     | '/progress'
@@ -135,6 +146,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/reset-password'
+    | '/_authenticated/billing'
     | '/_authenticated/dashboard'
     | '/_authenticated/learn'
     | '/_authenticated/progress'
@@ -215,6 +227,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/billing': {
+      id: '/_authenticated/billing'
+      path: '/billing'
+      fullPath: '/billing'
+      preLoaderRoute: typeof AuthenticatedBillingRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/session/$sessionId': {
       id: '/_authenticated/session/$sessionId'
       path: '/session/$sessionId'
@@ -226,6 +245,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedBillingRoute: typeof AuthenticatedBillingRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedLearnRoute: typeof AuthenticatedLearnRoute
   AuthenticatedProgressRoute: typeof AuthenticatedProgressRoute
@@ -235,6 +255,7 @@ interface AuthenticatedRouteRouteChildren {
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedBillingRoute: AuthenticatedBillingRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedLearnRoute: AuthenticatedLearnRoute,
   AuthenticatedProgressRoute: AuthenticatedProgressRoute,
