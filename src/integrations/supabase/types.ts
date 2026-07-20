@@ -273,9 +273,14 @@ export type Database = {
           created_at: string
           display_name: string | null
           id: string
+          lemon_customer_id: string | null
+          lemon_subscription_id: string | null
           locale_ui: string
+          subscription_ends_at: string | null
+          subscription_status: Database["public"]["Enums"]["subscription_status"]
           target_language: string
           theme: string
+          trial_ends_at: string | null
           updated_at: string
         }
         Insert: {
@@ -283,9 +288,14 @@ export type Database = {
           created_at?: string
           display_name?: string | null
           id: string
+          lemon_customer_id?: string | null
+          lemon_subscription_id?: string | null
           locale_ui?: string
+          subscription_ends_at?: string | null
+          subscription_status?: Database["public"]["Enums"]["subscription_status"]
           target_language?: string
           theme?: string
+          trial_ends_at?: string | null
           updated_at?: string
         }
         Update: {
@@ -293,9 +303,14 @@ export type Database = {
           created_at?: string
           display_name?: string | null
           id?: string
+          lemon_customer_id?: string | null
+          lemon_subscription_id?: string | null
           locale_ui?: string
+          subscription_ends_at?: string | null
+          subscription_status?: Database["public"]["Enums"]["subscription_status"]
           target_language?: string
           theme?: string
+          trial_ends_at?: string | null
           updated_at?: string
         }
         Relationships: []
@@ -480,6 +495,7 @@ export type Database = {
     }
     Enums: {
       app_role: "learner" | "admin" | "content_editor"
+      subscription_status: "none" | "free_trial" | "active" | "cancelled"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -608,6 +624,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["learner", "admin", "content_editor"],
+      subscription_status: ["none", "free_trial", "active", "cancelled"],
     },
   },
 } as const
