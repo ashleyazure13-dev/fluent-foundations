@@ -9,7 +9,7 @@ import { Sparkles, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/_authenticated/learn")({
-  head: () => ({ meta: [{ title: "Learn — Piazza" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [{ title: "Learn — Acquira" }, { name: "robots", content: "noindex" }] }),
   component: LearnPage,
 });
 

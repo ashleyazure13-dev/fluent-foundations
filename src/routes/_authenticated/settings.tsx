@@ -16,7 +16,7 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/_authenticated/settings")({
   head: () => ({
     meta: [
-      { title: "Settings — Piazza" },
+      { title: "Settings — Acquira" },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -70,7 +70,7 @@ function Settings() {
         <Card>
           <CardHeader>
             <CardTitle className="font-display">Profile</CardTitle>
-            <CardDescription>How you appear inside Piazza.</CardDescription>
+            <CardDescription>How you appear inside Acquira.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
@@ -100,7 +100,7 @@ function Settings() {
         <Card>
           <CardHeader>
             <CardTitle className="font-display">Appearance</CardTitle>
-            <CardDescription>Choose how Piazza looks on this device.</CardDescription>
+            <CardDescription>Choose how Acquira looks on this device.</CardDescription>
           </CardHeader>
           <CardContent>
             <RadioGroup
