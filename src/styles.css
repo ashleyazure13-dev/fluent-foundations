@@ -5,14 +5,22 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system — "Piazza"
- * Warm editorial palette inspired by old-world Italian print & modern apps.
- * All colors are oklch. Semantic tokens only. Never hardcode colors in JSX.
+ * Acquira design system
+ * A calm, academic, research-based palette inspired by Italian olive trees,
+ * cream paper, sage, forest, soft stone and warm ivory.
+ * All colours in oklch. Semantic tokens only — never hardcode in JSX.
+ *
+ * Reference hexes (approx):
+ *   Deep Forest Green  #234F3E
+ *   Sage Green         #A7C4A0
+ *   Warm Ivory         #FAF8F2
+ *   Light Stone        #E9E6DE
+ *   Accent Olive       #7A8F5A
  */
 
 @theme inline {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -40,6 +48,11 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
+  --color-sage: var(--sage);
+  --color-olive: var(--olive);
+  --color-stone: var(--stone);
+  --color-ivory: var(--ivory);
+
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -51,84 +64,98 @@
 }
 
 :root {
-  --radius: 0.75rem;
+  --radius: 0.625rem;
 
-  /* Light — warm paper */
-  --background: oklch(0.985 0.012 85);
-  --foreground: oklch(0.22 0.03 40);
+  /* Warm ivory paper */
+  --background: oklch(0.977 0.011 90);       /* #FAF8F2 */
+  --foreground: oklch(0.24 0.02 155);         /* deep forest ink */
 
-  --card: oklch(0.995 0.008 85);
-  --card-foreground: oklch(0.22 0.03 40);
-  --popover: oklch(0.995 0.008 85);
-  --popover-foreground: oklch(0.22 0.03 40);
+  --card: oklch(0.995 0.006 90);
+  --card-foreground: oklch(0.24 0.02 155);
+  --popover: oklch(0.995 0.006 90);
+  --popover-foreground: oklch(0.24 0.02 155);
 
-  /* Terracotta */
-  --primary: oklch(0.55 0.16 38);
-  --primary-foreground: oklch(0.985 0.012 85);
+  /* Deep forest green — #234F3E */
+  --primary: oklch(0.38 0.055 158);
+  --primary-foreground: oklch(0.977 0.011 90);
 
-  --secondary: oklch(0.93 0.02 70);
-  --secondary-foreground: oklch(0.28 0.04 45);
+  /* Light stone — #E9E6DE */
+  --secondary: oklch(0.925 0.012 90);
+  --secondary-foreground: oklch(0.28 0.03 155);
 
-  --muted: oklch(0.94 0.014 80);
-  --muted-foreground: oklch(0.5 0.03 55);
+  --muted: oklch(0.945 0.01 90);
+  --muted-foreground: oklch(0.48 0.02 145);
 
-  --accent: oklch(0.9 0.05 70);
-  --accent-foreground: oklch(0.28 0.04 45);
+  /* Sage green — #A7C4A0 */
+  --accent: oklch(0.82 0.055 145);
+  --accent-foreground: oklch(0.24 0.03 155);
 
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(0.985 0.012 85);
+  --destructive: oklch(0.52 0.16 28);
+  --destructive-foreground: oklch(0.977 0.011 90);
 
-  --border: oklch(0.88 0.02 70);
-  --input: oklch(0.9 0.02 70);
-  --ring: oklch(0.55 0.16 38);
+  --border: oklch(0.9 0.012 90);
+  --input: oklch(0.915 0.012 90);
+  --ring: oklch(0.5 0.06 155);
 
-  --sidebar: oklch(0.97 0.014 80);
-  --sidebar-foreground: oklch(0.22 0.03 40);
-  --sidebar-primary: oklch(0.55 0.16 38);
-  --sidebar-primary-foreground: oklch(0.985 0.012 85);
-  --sidebar-accent: oklch(0.92 0.02 70);
-  --sidebar-accent-foreground: oklch(0.28 0.04 45);
-  --sidebar-border: oklch(0.88 0.02 70);
-  --sidebar-ring: oklch(0.55 0.16 38);
+  /* Brand palette (available as bg-sage, text-olive, etc.) */
+  --sage: oklch(0.82 0.055 145);
+  --olive: oklch(0.6 0.07 130);
+  --stone: oklch(0.925 0.012 90);
+  --ivory: oklch(0.977 0.011 90);
+
+  --sidebar: oklch(0.965 0.012 90);
+  --sidebar-foreground: oklch(0.28 0.02 155);
+  --sidebar-primary: oklch(0.38 0.055 158);
+  --sidebar-primary-foreground: oklch(0.977 0.011 90);
+  --sidebar-accent: oklch(0.915 0.02 145);
+  --sidebar-accent-foreground: oklch(0.28 0.03 155);
+  --sidebar-border: oklch(0.9 0.012 90);
+  --sidebar-ring: oklch(0.5 0.06 155);
 }
 
 .dark {
-  /* Deep espresso */
-  --background: oklch(0.17 0.015 45);
-  --foreground: oklch(0.94 0.015 80);
+  /* Night forest */
+  --background: oklch(0.185 0.014 155);
+  --foreground: oklch(0.94 0.012 90);
 
-  --card: oklch(0.21 0.018 45);
-  --card-foreground: oklch(0.94 0.015 80);
-  --popover: oklch(0.21 0.018 45);
-  --popover-foreground: oklch(0.94 0.015 80);
+  --card: oklch(0.22 0.015 155);
+  --card-foreground: oklch(0.94 0.012 90);
+  --popover: oklch(0.22 0.015 155);
+  --popover-foreground: oklch(0.94 0.012 90);
 
-  --primary: oklch(0.72 0.15 45);
-  --primary-foreground: oklch(0.17 0.015 45);
+  /* Sage as primary in dark mode — reads elegant on deep bg */
+  --primary: oklch(0.82 0.055 145);
+  --primary-foreground: oklch(0.2 0.02 155);
 
-  --secondary: oklch(0.28 0.02 45);
-  --secondary-foreground: oklch(0.94 0.015 80);
+  --secondary: oklch(0.28 0.015 155);
+  --secondary-foreground: oklch(0.94 0.012 90);
 
-  --muted: oklch(0.25 0.018 45);
-  --muted-foreground: oklch(0.68 0.02 65);
+  --muted: oklch(0.25 0.014 155);
+  --muted-foreground: oklch(0.68 0.02 130);
 
-  --accent: oklch(0.32 0.04 55);
-  --accent-foreground: oklch(0.94 0.015 80);
+  --accent: oklch(0.32 0.035 150);
+  --accent-foreground: oklch(0.94 0.012 90);
 
-  --destructive: oklch(0.65 0.2 25);
-  --destructive-foreground: oklch(0.94 0.015 80);
+  --destructive: oklch(0.62 0.18 28);
+  --destructive-foreground: oklch(0.94 0.012 90);
 
-  --border: oklch(0.3 0.02 45 / 60%);
-  --input: oklch(0.3 0.02 45 / 80%);
-  --ring: oklch(0.72 0.15 45);
+  --border: oklch(0.3 0.015 155 / 60%);
+  --input: oklch(0.3 0.015 155 / 80%);
+  --ring: oklch(0.82 0.055 145);
 
-  --sidebar: oklch(0.19 0.016 45);
-  --sidebar-foreground: oklch(0.94 0.015 80);
-  --sidebar-primary: oklch(0.72 0.15 45);
-  --sidebar-primary-foreground: oklch(0.17 0.015 45);
-  --sidebar-accent: oklch(0.28 0.02 45);
-  --sidebar-accent-foreground: oklch(0.94 0.015 80);
-  --sidebar-border: oklch(0.3 0.02 45 / 60%);
-  --sidebar-ring: oklch(0.72 0.15 45);
+  --sage: oklch(0.82 0.055 145);
+  --olive: oklch(0.68 0.07 130);
+  --stone: oklch(0.32 0.015 150);
+  --ivory: oklch(0.94 0.012 90);
+
+  --sidebar: oklch(0.2 0.014 155);
+  --sidebar-foreground: oklch(0.94 0.012 90);
+  --sidebar-primary: oklch(0.82 0.055 145);
+  --sidebar-primary-foreground: oklch(0.2 0.02 155);
+  --sidebar-accent: oklch(0.28 0.02 150);
+  --sidebar-accent-foreground: oklch(0.94 0.012 90);
+  --sidebar-border: oklch(0.3 0.015 155 / 60%);
+  --sidebar-ring: oklch(0.82 0.055 145);
 }
 
 @layer base {
@@ -137,15 +164,16 @@
   }
   html {
     font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
   }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    letter-spacing: -0.005em;
   }
   .font-display {
     font-family: var(--font-display);
-    font-optical-sizing: auto;
-    letter-spacing: -0.02em;
+    font-weight: 600;
+    letter-spacing: -0.022em;
   }
 }
