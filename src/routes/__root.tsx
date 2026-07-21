@@ -19,7 +19,7 @@ function NotFoundComponent() {
       <div className="max-w-md text-center">
         <p className="font-display text-8xl font-black text-primary">404</p>
         <h1 className="mt-4 font-display text-2xl font-semibold text-foreground">
-          Pagina non trovata
+          Page not found
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
           The page you're looking for doesn't exist or has been moved.
@@ -78,43 +78,43 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Piazza — Learn Italian by communicating" },
+      { title: "Acquira — A calmer way to learn a language" },
       {
         name: "description",
         content:
-          "A communication-first language platform. Learn Italian through meaningful phrases, real dialogue, and daily speaking — not vocabulary drills.",
+          "Acquira is a research-based language platform. Learn through meaningful phrases, real dialogue, and daily speaking — grounded in second-language acquisition science.",
       },
-      { name: "author", content: "Piazza" },
-      { property: "og:title", content: "Piazza — Learn Italian by communicating" },
+      { name: "author", content: "Acquira" },
+      { property: "og:title", content: "Acquira — A calmer way to learn a language" },
       {
         property: "og:description",
         content:
-          "Communication-first language learning. Italian, spoken from day one.",
+          "Research-based language learning. Real conversation, meaningful phrases, durable memory.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Piazza — Learn Italian by communicating" },
+      { name: "twitter:title", content: "Acquira — A calmer way to learn a language" },
       {
         name: "twitter:description",
         content:
-          "Communication-first language learning. Italian, spoken from day one.",
+          "Research-based language learning. Real conversation, meaningful phrases, durable memory.",
       },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap",
       },
     ],
     scripts: [
       {
         children: `
 try {
-  var t = localStorage.getItem('piazza-theme');
+  var t = localStorage.getItem('acquira-theme');
   var m = window.matchMedia('(prefers-color-scheme: dark)').matches;
   if (t === 'dark' || (t !== 'light' && m)) document.documentElement.classList.add('dark');
 } catch(e) {}

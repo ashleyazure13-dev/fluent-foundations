@@ -11,7 +11,7 @@ import { Flame, Sprout, Timer, ArrowRight } from "lucide-react";
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
     meta: [
-      { title: "Dashboard — Piazza" },
+      { title: "Dashboard — Acquira" },
       { name: "robots", content: "noindex" },
     ],
   }),

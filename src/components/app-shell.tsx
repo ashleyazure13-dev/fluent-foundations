@@ -19,6 +19,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { PaywallGate } from "@/components/paywall-gate";
+import { LogoMark } from "@/components/logo";
 
 const nav = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -54,10 +55,8 @@ export function AppShell({ children }: { children: ReactNode }) {
             </Sheet>
 
             <Link to="/dashboard" className="flex items-center gap-2 md:hidden">
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-primary font-display text-sm font-bold text-primary-foreground">
-                P
-              </span>
-              <span className="font-display text-lg font-semibold">Piazza</span>
+              <LogoMark className="h-8 w-8" />
+              <span className="font-display text-lg font-semibold tracking-tight">Acquira</span>
             </Link>
 
             <div className="ml-auto flex items-center gap-2">
@@ -84,11 +83,9 @@ function SidebarBody({ onNavigate }: { onNavigate?: () => void }) {
         className="mb-8 flex items-center gap-2 px-2"
         onClick={onNavigate}
       >
-        <span className="grid h-9 w-9 place-items-center rounded-full bg-primary font-display text-lg font-bold text-primary-foreground">
-          P
-        </span>
+        <LogoMark className="h-9 w-9" />
         <span className="font-display text-xl font-semibold tracking-tight">
-          Piazza
+          Acquira
         </span>
       </Link>
       <nav className="flex flex-col gap-1">
@@ -139,7 +136,7 @@ function UserMenu() {
       .map((s) => s[0])
       .join("")
       .slice(0, 2)
-      .toUpperCase() ?? "P";
+      .toUpperCase() ?? "A";
 
   return (
     <DropdownMenu>

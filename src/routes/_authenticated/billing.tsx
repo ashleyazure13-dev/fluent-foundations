@@ -8,7 +8,7 @@ import { CheckCircle2 } from "lucide-react";
 export const Route = createFileRoute("/_authenticated/billing")({
   head: () => ({
     meta: [
-      { title: "Billing — Piazza" },
+      { title: "Billing — Acquira" },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -24,7 +24,7 @@ function Billing() {
         <div>
           <h1 className="font-display text-4xl font-semibold tracking-tight">Billing</h1>
           <p className="mt-2 text-muted-foreground">
-            Manage your Piazza subscription.
+            Manage your Acquira subscription.
           </p>
         </div>
 

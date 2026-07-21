@@ -17,7 +17,7 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/_authenticated/session/$sessionId")({
-  head: () => ({ meta: [{ title: "Session — Piazza" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [{ title: "Session — Acquira" }, { name: "robots", content: "noindex" }] }),
   component: SessionPlayer,
 });
 

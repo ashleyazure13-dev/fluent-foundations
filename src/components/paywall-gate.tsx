@@ -36,7 +36,7 @@ export function PaywallGate({ children }: { children: ReactNode }) {
             Your free trial has ended
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Upgrade to continue learning with Piazza.
+            Upgrade to continue learning with Acquira.
           </p>
           <Button asChild className="mt-6 w-full">
             <Link to="/billing">Upgrade</Link>

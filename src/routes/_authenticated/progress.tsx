@@ -6,7 +6,7 @@ import { TrendingUp } from "lucide-react";
 export const Route = createFileRoute("/_authenticated/progress")({
   head: () => ({
     meta: [
-      { title: "Progress — Piazza" },
+      { title: "Progress — Acquira" },
       { name: "robots", content: "noindex" },
     ],
   }),

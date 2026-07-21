@@ -11,7 +11,7 @@ import { Volume2, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/review")({
-  head: () => ({ meta: [{ title: "Review — Piazza" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [{ title: "Review — Acquira" }, { name: "robots", content: "noindex" }] }),
   component: ReviewPage,
 });
 

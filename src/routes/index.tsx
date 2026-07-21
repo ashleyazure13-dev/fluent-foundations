@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, MessageCircle, Sparkles, Repeat } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
+import { LogoMark } from "@/components/logo";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -12,11 +13,9 @@ function Landing() {
     <div className="min-h-screen bg-background text-foreground">
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
         <Link to="/" className="flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-primary font-display text-lg font-bold text-primary-foreground">
-            P
-          </span>
+          <LogoMark className="h-9 w-9" />
           <span className="font-display text-xl font-semibold tracking-tight">
-            Piazza
+            Acquira
           </span>
         </Link>
         <nav className="flex items-center gap-2">
@@ -39,13 +38,12 @@ function Landing() {
             Italian — first language pack
           </span>
           <h1 className="mt-6 font-display text-5xl font-semibold leading-[1.05] tracking-tight md:text-7xl">
-            Learn a language by <em className="text-primary not-italic">communicating</em>,
-            not memorizing.
+            A calmer way to <em className="text-primary not-italic">learn a language</em>.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
-            Piazza teaches you Italian through meaningful phrases, real
-            dialogue, and daily speaking — grounded in second-language
-            acquisition research. No streaks. No flashcards as the main event.
+            Acquira is a research-based platform for serious learners.
+            Meaningful phrases, real dialogue, and daily speaking — grounded
+            in second-language acquisition science. No streaks. No noise.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg">
@@ -83,8 +81,8 @@ function Landing() {
 
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-8 text-sm text-muted-foreground">
-          <span>© {new Date().getFullYear()} Piazza. Made with cura.</span>
-          <span className="font-display italic">A tavola non si invecchia.</span>
+          <span>© {new Date().getFullYear()} Acquira. Made with cura.</span>
+          <span className="font-display italic text-olive">Chi parla, impara.</span>
         </div>
       </footer>
     </div>

@@ -17,8 +17,8 @@ export const Route = createFileRoute("/auth")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
-      { title: "Sign in — Piazza" },
-      { name: "description", content: "Sign in or create your Piazza account." },
+      { title: "Sign in — Acquira" },
+      { name: "description", content: "Sign in or create your Acquira account." },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -104,19 +104,19 @@ function AuthPage() {
     <div className="grid min-h-screen bg-background lg:grid-cols-2">
       <aside className="hidden flex-col justify-between bg-primary p-10 text-primary-foreground lg:flex">
         <Link to="/" className="inline-flex items-center gap-2 text-primary-foreground/90 hover:text-primary-foreground">
-          <ArrowLeft className="h-4 w-4" /> Back to Piazza
+          <ArrowLeft className="h-4 w-4" /> Back to Acquira
         </Link>
         <div>
-          <p className="font-display text-4xl font-semibold leading-tight md:text-5xl">
+          <p className="font-display text-4xl font-semibold leading-tight tracking-tight md:text-5xl">
             "Chi parla, impara."
           </p>
           <p className="mt-4 text-primary-foreground/80">
-            The one who speaks, learns. Italian, one meaningful message at a
-            time.
+            The one who speaks, learns. A calmer, research-based way to
+            acquire a language.
           </p>
         </div>
         <p className="text-sm text-primary-foreground/70">
-          © {new Date().getFullYear()} Piazza
+          © {new Date().getFullYear()} Acquira
         </p>
       </aside>
 
