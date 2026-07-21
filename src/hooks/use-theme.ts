@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 type Theme = "light" | "dark" | "system";
-const KEY = "piazza-theme";
+const KEY = "acquira-theme";
 
 function apply(theme: Theme) {
   const isDark =
